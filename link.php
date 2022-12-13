@@ -1,4 +1,6 @@
 <?php
+// https://github.com/PetersOtto/yellow-link
+
 class YellowLink {
     const VERSION = "0.1.2";
     public $yellow;         // access to API
