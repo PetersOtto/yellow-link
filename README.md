@@ -4,6 +4,7 @@ Extension for use external links with Datenstrom Yellow
 ## How to add an external Link
 
 Use the shortcut `link`. Insert text and URL separated by a semicolon. 
+If text and URL are the same, then the URL followed by a simicolon is sufficient.
 
 ## Examples
 
@@ -11,7 +12,7 @@ If you use:
 
     [link TEXT;URL]
     [link OSM;https://www.openstreetmap.org/]
-    [link https://www.openstreetmap.org/;https://www.openstreetmap.org/]
+    [link https://www.openstreetmap.org/;https://www.openstreetmap.org/] or shorter [link https://www.openstreetmap.org/;]
     
 This will be the result:
     
