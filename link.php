@@ -1,6 +1,6 @@
 <?php
 class YellowLink {
-    const VERSION = "0.2.0";
+    const VERSION = "0.3.0";
     public $yellow;         // access to API
 
     // Handle initialisation
@@ -10,15 +10,27 @@ class YellowLink {
 
     // Handle page content of shortcut
     public function onParseContentShortcut($page, $name, $text, $type) {
-        $cutText = explode(";", $text);
-        $cutTextNull = $cutText[1];
+        $textCuts = explode(";", $text);
+        $cutTextNull = $textCuts[1];
         $cutTextNull = trim($cutTextNull);
+        $currentUrl = $this->yellow->page->getUrl();
+        $outgoingLink = "\" target=\"_blank\" rel=\"noopener noreferrer\" >";
+        $internalLink = "\" >";
         $output = null;
+
+        if (!is_string_empty($currentUrl)) {
+            list($scheme, $address, $base) = $this->yellow->lookup->getUrlInformation($currentUrl);
+        }
+        if (strpos($textCuts[0], $address) == true ) {
+            $outgoingLink = $internalLink;
+        }
+
         if ($name=="link" && ($type=="inline")) {
+            
             if ($cutTextNull == ""){
-                $output = "<a href=\"" . $cutText[0] . "\" target=\"_blank\" rel=\"noopener noreferrer\" >" . $cutText[0] ."</a>";
+                $output = "<a href=\"" . $textCuts[0] . $outgoingLink . $textCuts[0] ."</a>";
             } else {
-                $output = "<a href=\"" . $cutText[1] . "\" target=\"_blank\" rel=\"noopener noreferrer\" >" . $cutText[0] ."</a>";
+                $output = "<a href=\"" . $textCuts[0] . $outgoingLink . $textCuts[1] ."</a>";
             }
         }
         return $output;
