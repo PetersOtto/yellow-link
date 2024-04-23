@@ -1,6 +1,6 @@
 <?php
 class YellowLink {
-    const VERSION = "0.4.0";
+    const VERSION = "0.05";
     public $yellow;         // access to API
 
     // Handle initialisation
@@ -9,7 +9,7 @@ class YellowLink {
     }
 
     // Handle page content of shortcut
-    public function onParseContentElement($page, $name, $text, $type) {
+    public function onParseContentElement($page, $name, $text, $attributes, $type) {
         $textCuts = explode(";", $text);
         $cutTextNull = $textCuts[1];
         $cutTextNull = trim($cutTextNull);
