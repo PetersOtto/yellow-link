@@ -1,6 +1,6 @@
 <?php
 class YellowLink {
-    const VERSION = "0.05";
+    const VERSION = "0.9.5";
     public $yellow;         // access to API
 
     // Handle initialisation
